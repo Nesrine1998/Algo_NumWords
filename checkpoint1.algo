@@ -1,0 +1,39 @@
+ALGORITHM algorithm_numWords
+VAR
+    sentence: STRING;        //notre input 
+    long: INTEGER:= 0;      //compteur pour la longueur de la phrase
+    word_num: INTEGER :=1;  //compteur pour le nombre des mots
+    vowel:INTEGER:=0;       //compteur pour le nombre des voyelles
+    vowels:STRING := "aeiouAEIOU" ;  // liste des voyelles
+    char: CHAR; //chaque caractére de notre phrase
+
+BEGIN
+    FOR i FROM 0 TO (length (sentence)-1) DO
+
+        char:= sentence[i]
+
+        //fin de la phrase
+
+        IF (char='.') THEN
+           long := long+1;
+           break; 
+
+        //Nouveau mot aprés chaque espace
+        Else IF (char =' ') THEN
+           word_num:= word_num+1;
+           long := long+1;
+
+        //si le char est une voyelle
+        Else IF char in vowels THEN
+           vowel:= vowel +1;
+           long := long+1;
+
+        END_IF
+
+    END_FOR
+
+    write("Longueur de la phrase: ", long)
+    write("Nombre de mots: ", word_num)
+    write("Nombre de voyelles: ", vowel)
+    
+END
